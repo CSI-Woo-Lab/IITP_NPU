@@ -15,6 +15,7 @@ from typing import Dict, Callable, Optional, Tuple
 from dataset_utils import getCIFAR10, do_fl_partitioning, get_dataloader
 from torchvision.models.resnet import resnet18
 import math
+import argparse
 
 # Model (simple CNN adapted from 'PyTorch: A 60 Minute Blitz')
 # borrowed from Pytorch quickstart example
@@ -81,7 +82,7 @@ class CifarRayClient(fl.client.NumPyClient):
         self.net = Net()
 
         # determine device
-        self.device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
     def get_parameters(self):
@@ -222,14 +223,30 @@ def get_initial_parameters(num_classes: int = 10) -> Parameters:
 #    client. This is useful to get a sense on how well the global model can generalise
 #    to each client's data.
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--device', type=str, default=None)
+    option = parser.parse_args()
+    option = parser.parse_args()
+    if option.device == "gpu":
+        client_resources = {"num_gpus":1}  # each client will get allocated 1 CPUs
+        if option.num is None:
+            print('input device number, ex) 0,1,...')
+            exit(1)
+        os.environ["CUDA_VISIBLE_DEVICES"] = option.device
+    elif option.device == "cpu":
+        client_resources = {"num_cpus": 1}  # each client will get allocated 1 CPUs
+    else:
+        print('input device, ex) cpu or gpu')
+        exit(1)
+    if option.device is None:
+        print('input device number, ex) 0,1,...')
+        exit(1)
+
     print("====================================")
     print("[main]cuda,",torch.cuda.is_available())
     print("====================================")
 
     pool_size = 100  # number of dataset partions (= number of total clients)
-    #client_resources = {"num_cpus": 1, "num_gpus":1}  # each client will get allocated 1 CPUs
-    client_resources = {"num_gpus":1}  # each client will get allocated 1 CPUs
-
     # download CIFAR10 dataset
     train_path, testset = getCIFAR10()
     
