@@ -1,4 +1,4 @@
-# IITP_NPU Federated Framework Based on Flower Framework for CIFAR-10 Federated Learning Evaluation
+# IITP_NPU Federated Learning Framework Based on Flower Framework
 
 ### This project was supported in part by the Institute for Information and Communications Technology Planning and Evaluation (IITP) under Grant 2021-0-00875
 
