@@ -81,7 +81,7 @@ class CifarRayClient(fl.client.NumPyClient):
         self.net = Net()
 
         # determine device
-        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 
     def get_parameters(self):
