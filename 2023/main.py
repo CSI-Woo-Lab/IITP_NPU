@@ -20,7 +20,7 @@ import math
 class Net(nn.Module):
     def __init__(self) -> None:
         super(Net, self).__init__()
-        self.resnet = resnet18(pretrained=True)
+        self.resnet = resnet18(weights='ResNet18_Weights.DEFAULT')
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 10)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -80,6 +80,9 @@ class CifarRayClient(fl.client.NumPyClient):
         self.net = Net()
 
         # determine device
+        print("====================================")
+        print("[ray]cuda,",torch.cuda.is_available())
+        print("====================================")
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
@@ -219,6 +222,9 @@ def get_initial_parameters(num_classes: int = 10) -> Parameters:
 #    client. This is useful to get a sense on how well the global model can generalise
 #    to each client's data.
 if __name__ == "__main__":
+    print("====================================")
+    print("[main]cuda,",torch.cuda.is_available())
+    print("====================================")
 
     pool_size = 100  # number of dataset partions (= number of total clients)
     client_resources = {"num_cpus": 1}  # each client will get allocated 1 CPUs
