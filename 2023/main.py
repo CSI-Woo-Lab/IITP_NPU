@@ -229,15 +229,16 @@ if __name__ == "__main__":
     option = parser.parse_args()
     if option.device == "gpu":
         client_resources = {"num_gpus":1}  # each client will get allocated 1 CPUs
-        if option.num is None:
-            print('input device number, ex) 0,1,...')
-            exit(1)
-        os.environ["CUDA_VISIBLE_DEVICES"] = option.device
     elif option.device == "cpu":
         client_resources = {"num_cpus": 1}  # each client will get allocated 1 CPUs
     else:
         print('input device, ex) cpu or gpu')
         exit(1)
+
+    if option.num is None:
+        print('input device number, ex) 0,1,...')
+        exit(1)
+    os.environ["CUDA_VISIBLE_DEVICES"] = option.num
 
     print("====================================")
     print("[main]cuda,",torch.cuda.is_available())
