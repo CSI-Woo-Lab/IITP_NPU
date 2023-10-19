@@ -1,3 +1,4 @@
+import os
 import flwr as fl
 from flwr.common.typing import Scalar, Parameters
 from flwr.common.parameter import weights_to_parameters
@@ -80,9 +81,6 @@ class CifarRayClient(fl.client.NumPyClient):
         self.net = Net()
 
         # determine device
-        print("====================================")
-        print("[ray]cuda,",torch.cuda.is_available())
-        print("====================================")
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
@@ -109,7 +107,8 @@ class CifarRayClient(fl.client.NumPyClient):
         self.set_parameters(parameters)
 
         # load data for this client and get trainloader
-        num_workers = len(ray.worker.get_resource_ids()["CPU"])
+        #num_workers = len(ray.worker.get_resource_ids()["CPU"])
+        num_workers = len(ray.get_runtime_context().get_assigned_resources())
         trainloader = get_dataloader(
             self.fed_dir,
             self.cid,
@@ -133,7 +132,8 @@ class CifarRayClient(fl.client.NumPyClient):
         self.set_parameters(parameters)
 
         # load data for this client and get trainloader
-        num_workers = len(ray.worker.get_resource_ids()["CPU"])
+        #num_workers = len(ray.worker.get_resource_ids()["CPU"])
+        num_workers = len(ray.get_runtime_context().get_assigned_resources())
         valloader = get_dataloader(
             self.fed_dir, self.cid, is_train=False, batch_size=50, workers=num_workers
         )
@@ -227,7 +227,8 @@ if __name__ == "__main__":
     print("====================================")
 
     pool_size = 100  # number of dataset partions (= number of total clients)
-    client_resources = {"num_cpus": 1}  # each client will get allocated 1 CPUs
+    #client_resources = {"num_cpus": 1, "num_gpus":1}  # each client will get allocated 1 CPUs
+    client_resources = {"num_gpus":1}  # each client will get allocated 1 CPUs
 
     # download CIFAR10 dataset
     train_path, testset = getCIFAR10()
