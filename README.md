@@ -11,7 +11,7 @@
 * #### Evaluation Metric: Classification
 
 ## System Architecture 
-![architecture](/asset/architecture.png)
+![architecture](/asset/architecture.bmp)
 
 ## Dataset: CIFAR-10
 ![CIFAR-10 Dataset Examples](/asset/cifar.png)
