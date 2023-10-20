@@ -10,12 +10,15 @@
 * #### Client \#: 100
 * #### Evaluation Metric: Classification
 
-
 ## System Architecture 
 ![architecture](/asset/architecture.png)
 
 ## Dataset: CIFAR-10
 ![CIFAR-10 Dataset Examples](/asset/cifar.png)
+
+## Our Framework Conformance Verification
+![CIFAR-10 Dataset Examples](/asset/verification.png)
+
 
 ## Install
 
@@ -30,12 +33,16 @@ docker run --gpus all -e LC_ALL=C.UTF-8 -p 8080:8080 -it mkris0714/iitp_npu:late
 git clone https://github.com/CSI-Woo-Lab/IITP_NPU.git
 ```
 
-### Excute
+### Excute (for CPU)
 ``` bash
-cd ~/2023
-python main.py
+python main.py --device=cpu --num=0
 ```
 
-### Evaluation Results Checking
+### Excute (for GPU)
+``` bash
+python main.py --device=gpu --num=0
+```
+
+### Evaluation Results
 ``` bash
 ```
