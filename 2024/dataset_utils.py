@@ -120,7 +120,6 @@ def cifar10TestTransformation():
         [
             transforms.ToTensor(),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616)),
-            # transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
         ]
     )
 
@@ -133,9 +132,7 @@ def cifar10Transformation():
             transforms.RandomHorizontalFlip(),
             transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
             transforms.ToTensor(),
-            # transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616)),
-            #transforms.Normalize((0.4467, 0.4398, 0.4065), (0.2023, 0.1994, 0.2010)),
         ]
     )
 
@@ -145,7 +142,6 @@ def stl10TestTransformation():
             transforms.Resize((32, 32)),
             transforms.ToTensor(),
             transforms.Normalize((0.4467, 0.4398, 0.4066), (0.2603, 0.2566, 0.2713)),
-            #0.446710620659723 0.4398098398352401 0.40664644709967407 0.2603409782662332 0.2565772731134434 0.2712673814522549
         ]
     )
 
@@ -225,13 +221,7 @@ class TorchVision_FL(VisionDataset):
                 target = 6
             if not isinstance(img, Image.Image):
                 img_np = img.numpy() if isinstance(img, torch.Tensor) else img
-                # print('dataset3_shape:', img_np.shape)
                 img = Image.fromarray(img_np.transpose((1,2,0)))
-            # if not isinstance(img, Image.Image):  # if not PIL image
-            #     if not isinstance(img, np.ndarray):  # if torch tensor
-            #         img = img.numpy()
-
-            #     img = Image.fromarray(img)
 
             if self.transform2 is not None:
                 img = self.transform2(img)

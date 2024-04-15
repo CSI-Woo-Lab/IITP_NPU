@@ -17,8 +17,8 @@ from torchvision.models.resnet import resnet18
 import math
 import argparse
 
-CIFAR10 = ['airplane', 'automobile', 'bird', 'cat', 'deer', 
-    'dog', 'frog', 'horse', 'ship', 'truck']
+# CIFAR10 = ['airplane', 'automobile', 'bird', 'cat', 'deer', 
+#     'dog', 'frog', 'horse', 'ship', 'truck']
 
 # Model (simple CNN adapted from 'PyTorch: A 60 Minute Blitz')
 # borrowed from Pytorch quickstart example
@@ -26,12 +26,7 @@ class Net(nn.Module):
     def __init__(self) -> None:
         super(Net, self).__init__()
         self.resnet = resnet18(weights='ResNet18_Weights.DEFAULT')
-        # self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 10)
-        self.resnet.fc = nn.Sequential(
-            nn.Linear(self.resnet.fc.in_features, 256, bias=False),
-            nn.ReLU(True),
-            nn.Linear(256, 10, bias=False),
-        )
+        self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 10)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.resnet(x)
