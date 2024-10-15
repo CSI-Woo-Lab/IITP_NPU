@@ -36,7 +36,6 @@ config 파일은 아래와 같은 구조를 가집니다:
 names:
   0: class0
   1: class1
-  # 더미 클래스 이름 추가 가능
 nc: 2
 train: path/to/train/images
 val: path/to/val/images
