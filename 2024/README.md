@@ -41,3 +41,8 @@ nc: 2
 train: path/to/train/images
 val: path/to/val/images
 ```
+
+
+## 3. Training
+
+## 4. Testing
