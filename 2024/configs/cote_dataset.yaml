@@ -1,0 +1,18 @@
+names:
+  0: General trash
+  1: Paper
+  2: Paper pack
+  3: Metal
+  4: Glass
+  5: Plastic
+  6: Styrofoam
+  7: Plastic bag
+  8: Battery
+  9: Clothing
+
+nc: 10
+train: /root/data/cote_data
+val: /root/data/cote_data
+
+train_ann: /root/data/cote_data/train.json
+val_ann: /root/data/cote_data/test.json

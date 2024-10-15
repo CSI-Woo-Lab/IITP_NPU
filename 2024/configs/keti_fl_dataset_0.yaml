@@ -1,0 +1,95 @@
+class_names:
+- Cross Intersection
+- 'T-Intersection '
+- Use both lane
+- Intersection 1
+- Intersection 2
+- Seperation for direction
+- Right-Merge
+- U-Turn
+- Roundabout
+- Left Turn and Right Turn
+- Right-Curve
+- Left-Curve
+- Left Turn and U-Turn
+- Left-Double reverse-Curve
+- Keep Left
+- Up-Hill
+- Down-Hill
+- Keep Right
+- Right Lane Ends
+- Left Lane Ends
+- Straight Thru and Left Turn
+- Use both lane
+- Divided Road
+- Straight Thru and Right Turn
+- Signal
+- Slippery when wet
+- Riverside Road
+- Rough Road
+- Speed Bump
+- Keepout Rocks
+- Cross Walk
+- Watchout Children
+- Watchout bicycle
+- Road Work
+- Bus Lane
+- Side Wind
+- Tunnel
+- Bridge
+- Caution Wild Life
+- Danger
+- Left Turn
+- Right Turn
+- Left turn signal yield on Green
+- No Trucks Allowed
+- One way(3)
+- No motorcycles Allowed
+- No Automobiles Allowed
+- Straight Thru
+- No bicycles Allowed
+- No Entry
+- No Straight Thru
+- No Right Turn
+- No Left Turn
+- No U-Turn
+- Do Not Pass
+- No Parking or Standing
+- No Parking
+- Gap between cars
+- Speed Limit 30
+- Speed Limit 40
+- Speed Limit 50
+- Speed Limit 60
+- Speed Limit 70
+- Speed Limit 80
+- Speed Limit 90
+- Speed Limit 100
+- Speed Limit 110
+- Roundabout
+- Bicycle Pedestrian Detour
+- Speed Limit Minimum 50
+- One way(1)
+- Bicycle Cross Walk
+- Caution Children
+- Bicycle Only
+- Cross Walk
+- Parking Lot
+- Slow Down
+- Stop
+- Yield
+- No Pedestrian Passing
+- Seperation Bicycle and Pedestrian
+- Driveway
+- VMS
+- road usable
+- road unusable
+- unknown
+- red
+- yellow
+- green
+- left
+- green_left
+nc: 93
+train: /root/data/fl_yolo_data/0/images/train
+val: /root/data/new_balanced_yolo_data/images/val
