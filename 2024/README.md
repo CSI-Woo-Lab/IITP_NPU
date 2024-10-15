@@ -5,21 +5,22 @@
 YOLO 데이터셋 구조를 따르며, **Federated Learning(FL)**을 위해 데이터셋을 여러 개의 디렉토리로 나누어야 합니다. 아래는 그 예시입니다:
 
 ```
-0
-├── images
-│   ├── train
-│   └── val
-└── labels
-    ├── train
-    └── val
-1
-├── images
-│   ├── train
-│   └── val
-└── labels
-    ├── train
-    └── val
-2
+-0
+ ├── images
+ │   ├── train
+ │   └── val
+ └── labels
+     ├── train
+     └── val
+-1
+ ├── images
+ │   ├── train
+ │   └── val
+ └── labels
+     ├── train
+     └── val
+-2
+...
 ```
 ## 2. Config 파일 구조
 
