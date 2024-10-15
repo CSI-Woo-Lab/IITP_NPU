@@ -28,9 +28,9 @@ config 파일은 아래와 같은 구조를 가집니다:
 
 - **class names**: index에 해당하는 class 이름 (더미 값 넣어도 무관)
 - **nc**: class 개수
-- **train**: `train`에 사용할 이미지 경로
-- **val**: `val(test)`에 사용할 이미지 경로
-- **labels**: `train`과 동일한 디렉토리에서 label 경로를 사용
+- **train**: train에 사용할 이미지 경로
+- **val**: val(test)에 사용할 이미지 경로
+- label은 train과 동일한 디렉토리에서 label 경로를 사용
 
 ```yaml
 # 예시 config 파일 구조
