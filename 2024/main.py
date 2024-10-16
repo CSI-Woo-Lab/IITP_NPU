@@ -347,9 +347,9 @@ class KLD_FedAvg(FedAvg):
 
 
 class CifarRayClient(fl.client.NumPyClient):
-    def __init__(self, cid: str, fed_dir_data: str = None, model_yaml: str = None, teacher_model: DetectionModel = None, kld_in_train: bool = False):
+    def __init__(self, cid: str, fed_dir_data: str = None, model_yaml: str = None, teacher_model: DetectionModel = None, kld_in_train: bool = False, dataset_yaml: str = None):
         self.cid = cid
-        self.data = f"configs/keti_fl_dataset_{cid}.yaml"
+        self.data = dataset_yaml.replace('.yaml', f'_{cid}.yaml')
         self.fed_dir = Path(self.data)
 
         self.properties: Dict[str, Scalar] = {"tensor_type": "numpy.ndarray"}
@@ -383,7 +383,7 @@ class CifarRayClient(fl.client.NumPyClient):
 
     def _setup_train(self, model):
         train_kwargs = {
-            'data': f"configs/keti_fl_dataset_{self.cid}.yaml",
+            'data': self.data,
             'batch': batch_size,
             'epochs': 1,
             'imgsz': 640,
@@ -547,8 +547,6 @@ def get_eval_fn(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', type=str, default='gpu')
-    parser.add_argument('--num', type=str, default='0')
     parser.add_argument('--fl_kld', action='store_true', help='KLD after FL process')
     parser.add_argument('--no_kld', action='store_true', help='Not using KLD')
     parser.add_argument('--large_model_path', type=str, default='./IITP/YOLO_large_night_best.pt')
@@ -670,7 +668,7 @@ if __name__ == "__main__":
 
 
     def client_fn(cid: str):
-        client = CifarRayClient(cid, model_yaml=model_yaml, teacher_model=teacher_yolo_model, kld_in_train=False if no_kld else kld_in_fl)
+        client = CifarRayClient(cid, model_yaml=model_yaml, teacher_model=teacher_yolo_model, kld_in_train=False if no_kld else kld_in_fl, dataset_yaml=day_dataset_yaml)
         return client
 
     # (optional) specify ray config
