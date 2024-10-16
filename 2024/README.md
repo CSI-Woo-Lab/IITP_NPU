@@ -55,7 +55,7 @@ val: path/to/val/images
 
 
 ```
-python main.py --fl_kld --large_model_path YOLO_large_night_best.pt --model_yaml configs/small_detection_cfg.yaml --day_dataset_yaml configs/keti_fl_dataset.yaml --night_dataset_yaml configs/night_keti_dataset.yaml
+python main.py --fl_kld --large_model_path KLD_model_best.pt --model_yaml configs/small_detection_cfg.yaml --day_dataset_yaml configs/keti_fl_dataset.yaml --night_dataset_yaml configs/night_keti_dataset.yaml
 ```
 
 ## 4. Testing
