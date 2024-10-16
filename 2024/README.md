@@ -46,8 +46,16 @@ val: path/to/val/images
 
 
 ## 3. Training
+- **fl_kld**: Large model을 사용한 KLD를 parameter average 계산 이후에 진행 (미사용 시 각 client마다 별개로 KLD 진행, default는 사용)
+- **no_kld**: KLD 없이 FL로만 학습
+- **large_model_path**: KLD에 사용할 model path
+- **model_yaml**: 학습할 model의 model yaml file, fl 시 yaml 파일명 뒤에 _0, _1 형태로 index 붙어서 사용.
+- **day_dataset_yaml**: FL에 사용할 datset yaml
+- **night_dataset_yaml**: KLD에 사용할 dataset yaml
+
+
 ```
-python main.py --configs ~
+python main.py --fl_kld --large_model_path YOLO_large_night_best.pt --model_yaml './configs/small_detection_cfg.yaml' --day_dataset_yaml keti_fl_dataset.yaml --night_dataset_yaml 'configs/night_keti_dataset.yaml'
 ```
 
 ## 4. Testing
