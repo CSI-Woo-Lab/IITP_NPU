@@ -59,3 +59,12 @@ python main.py --fl_kld --large_model_path KLD_model_best.pt --model_yaml config
 ```
 
 ## 4. Testing
+
+- **model_path**: test에 사용할 model path
+- **model_yaml**: model의 model yaml file
+- **dataset_yaml**: test에 사용할 datset yaml
+- **save_dir**: eval 결과를 저장할 디렉토리 이름
+
+```
+python test.py -model_path KLD_model_best.pt --model_yaml configs/small_detection_cfg.yaml --dataset_yaml configs/keti_fl_dataset.yaml --save_dir ./test
+```
